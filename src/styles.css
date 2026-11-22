@@ -121,7 +121,7 @@ body {
   display: block;
   width: 100%;
   aspect-ratio: 2 / 1;
-  object-fit: cover;
+  object-fit: contain;
   background: var(--card-border);
   border-bottom: 1px solid var(--card-border);
 }
