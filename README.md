@@ -14,6 +14,9 @@ touch. No state, no dependencies at runtime.
   silently serve a broken page.
 - The page itself is fully static (Vite + TypeScript, no framework) and renders
   the grid immediately from `window.__SERVICES__`.
+- The container runs as the unprivileged `nginx` user (uid 101) and listens on
+  port **8080** internally (unprivileged users can't bind port 80). Map the host
+  port to 8080, e.g. `-p 8080:8080`.
 
 Config changes take effect on container restart.
 
@@ -41,7 +44,7 @@ services:
 
 ```sh
 docker build -t ablhome .
-docker run --rm -p 8080:80 \
+docker run --rm -p 8080:8080 \
   -v /host/path/services.yaml:/config/services.yaml:ro \
   ablhome
 ```

@@ -14,7 +14,7 @@ services:
     build: .
     container_name: ablhome
     ports:
-      - "8080:80"
+      - "8080:8080"
     volumes:
       # The service list; mounted read-only at the path the entrypoint expects.
       - ./config/services.yaml:/config/services.yaml:ro
