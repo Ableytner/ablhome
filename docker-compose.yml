@@ -1,0 +1,21 @@
+# Sample dev environment for ablhome.
+#
+# Usage:
+#   docker compose up --build
+#
+# Then open http://localhost:8080
+#
+# Config changes: edit config/services.yaml and restart:
+#   docker compose restart
+# (the container only reads the config at startup by design)
+
+services:
+  ablhome:
+    build: .
+    container_name: ablhome
+    ports:
+      - "8080:80"
+    volumes:
+      # The service list; mounted read-only at the path the entrypoint expects.
+      - ./config/services.yaml:/config/services.yaml:ro
+    restart: unless-stopped

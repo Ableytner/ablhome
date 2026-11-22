@@ -1,0 +1,33 @@
+# Service launcher configuration.
+#
+# Top-level key: services (list)
+# Each entry requires: name, url, image (all non-empty strings)
+# Optional: group (string). Services are rendered in stacked sections, one per
+# group, in the order groups first appear. Services without a group are
+# rendered under "Other".
+# Optional: description (string). A short line shown under the name on the card.
+#
+# This file is bind-mounted into the container at /config/services.yaml.
+# The container fails to start if the file is missing or invalid.
+# After changing it, restart the container.
+services:
+  - name: GitLab
+    group: Development
+    url: https://git.example.com
+    image: https://git.example.com/assets/logo.png
+    description: Source code and CI
+  - name: Jira
+    group: Development
+    url: https://jira.example.com
+    image: https://jira.example.com/images/jira-logo.png
+    description: Issue and project tracking
+  - name: Open-WebUI
+    group: AI
+    url: https://open-webui.example.com
+    image: https://open-webui.example.com/logo.png
+    description: AI chats and automation
+  - name: Grafana
+    group: Monitoring
+    url: https://grafana.example.com
+    image: https://grafana.example.com/static/logo.png
+    description: Dashboards and metrics

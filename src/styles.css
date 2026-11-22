@@ -1,0 +1,175 @@
+:root {
+  --bg: #f4f5f7;
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --text: #1a1c1f;
+  --text-muted: #5c636e;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.16);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161a;
+    --card-bg: #1e2126;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text: #e8eaed;
+    --text-muted: #9aa1ab;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.6);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Extra bottom padding keeps the last cards clear of the fixed footer. */
+  padding: 1.5rem 1rem 4.5rem;
+}
+
+.app-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 0 1.5rem;
+}
+
+.empty {
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.group {
+  margin-bottom: 1.75rem;
+}
+
+.group-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 0 0 0.6rem;
+  padding-left: 0.25rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 1rem;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  min-height: 44px;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+/* Hover effects are purely cosmetic; nothing depends on them. */
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+.card:focus-visible {
+  outline: 2px solid #4a90d9;
+  outline-offset: 2px;
+}
+
+.card-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  background: var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.card-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.6rem 0.75rem;
+}
+
+.card-name {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: center;
+  /* Keep long names from breaking the layout. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card-desc {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--card-border);
+  background: var(--bg);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
