@@ -1,8 +1,8 @@
-# ablhome
+# AblapiWeb
 
-A fast, responsive landing page that lists internal services as a grid of cards
-(image + name) and redirects to them on click/tap. Desktop and mobile, mouse or
-touch. No state, no dependencies at runtime.
+A small static landing page which lets the user redirect to any listed page by clicking on it.
+
+This project is pure vibe-coded slop, no code in this repository should be trusted.
 
 ## How it works
 
