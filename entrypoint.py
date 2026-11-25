@@ -21,7 +21,7 @@ DOCROOT = Path(os.environ.get("ABLHOME_DOCROOT", "/usr/share/nginx/html"))
 OUTPUT_PATH = DOCROOT / "config" / "services.js"
 
 REQUIRED_FIELDS = ("name", "url", "image")
-OPTIONAL_FIELDS = ("group", "description")
+OPTIONAL_FIELDS = ("group", "description", "description_de")
 
 
 def fail(message: str) -> None:

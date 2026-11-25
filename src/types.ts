@@ -6,6 +6,8 @@ export interface Service {
   group?: string;
   /** Optional short description shown below the name. */
   description?: string;
+  /** Optional German translation of `description`, shown when the browser language is German. */
+  description_de?: string;
 }
 
 declare global {

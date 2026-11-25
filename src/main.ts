@@ -57,6 +57,20 @@ footer.className = 'footer';
 footer.textContent = 'Ableytners\' HomeLab';
 app.appendChild(footer);
 
+/**
+ * Pick the description to show based on the browser language.
+ * German browsers get `description_de` when present; everyone else (and
+ * German browsers without a translation) falls back to `description`.
+ */
+function pickDescription(service: Service): string | undefined {
+  const lang = (navigator.language ?? '').toLowerCase();
+  if (lang.startsWith('de')) {
+    const de = service.description_de?.trim();
+    if (de) return de;
+  }
+  return service.description?.trim() || undefined;
+}
+
 function createCard(service: Service): HTMLAnchorElement {
   const card = document.createElement('a');
   card.className = 'card';
@@ -85,7 +99,7 @@ function createCard(service: Service): HTMLAnchorElement {
   name.textContent = service.name;
   label.append(name);
 
-  const description = service.description?.trim();
+  const description = pickDescription(service);
   if (description) {
     const desc = document.createElement('span');
     desc.className = 'card-desc';

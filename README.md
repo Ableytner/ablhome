@@ -29,6 +29,7 @@ services:
     url: https://git.example.com
     image: https://git.example.com/assets/logo.png
     description: Source code and CI
+    description_de: Quellcode und CI
 ```
 
 - Top-level key `services`: a list of entries.
@@ -37,6 +38,8 @@ services:
   one per group, in the order each group first appears. Services without a
   `group` are rendered under **Other**.
 - `description` is optional. A short line rendered under the name on the card.
+- `description_de` is optional. German translation of `description`, shown when the
+  browser language is German; falls back to `description` if absent.
 - Unknown fields are rejected (catches typos).
 - Images are hosted by the services themselves (absolute URLs).
 
