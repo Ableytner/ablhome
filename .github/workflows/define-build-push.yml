@@ -61,3 +61,11 @@ jobs:
         push: ${{ inputs.push_image }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
+
+  deploy:
+    needs: build-push
+    if: ${{ inputs.push_image }}
+    uses: ./.github/workflows/define-deploy.yml
+    with:
+      deploy_name: ablhome
+    secrets: inherit
